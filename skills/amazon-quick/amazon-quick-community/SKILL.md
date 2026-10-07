@@ -1,8 +1,7 @@
 ---
 name: amazon-quick-community
 display_name: Amazon Quick Community
-icon: "🌐"
-icon_image: assets/icon.svg
+icon: assets/icon.svg
 author: "Amazon Quick Community Team"
 description: "Navigate and search the Amazon Quick Community, the public forum where Quick users ask questions, access learning content, attend live events, join local user groups, and share dashboards. Routes users to the right community section, searches for existing answers to questions, and provides awareness summaries of what the community offers. Use when asked about 'quick community', 'community resources', 'find an answer', 'learning resources', 'user groups', 'community events', or 'developer corner'."
 created_date: "2026-06-11"
@@ -14,7 +13,7 @@ inputs:
     description: "What the user is looking for: a question to search, a topic to learn about, or a type of resource to discover"
     type: string
     required: false
-checksum: "sha256:18bcf655f5c07adea187d2ef38853f7c9caa67f7431e7626d631003cb339c86e"
+checksum: "sha256:b061f1646db9f8ce7b65a91669fde7841e65bf42145a7d6e69ebe36eabcbd9a3"
 ---
 
 ## Overview
