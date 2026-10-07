@@ -1,5 +1,5 @@
 {
-  "skillsChecksum": "sha256:c34322d89be06cdd86b560637623b3d261b7988e99428381fbf5d08776bf0a36",
+  "skillsChecksum": "sha256:54ef5e368218186280cfb2579d91982e3f569c8efcdfb4bdad293ef605e1683a",
   "categories": [
     {
       "name": "Amazon Quick",
@@ -36,12 +36,12 @@
         {
           "path": "skills/customer-success/customer-health-scorer",
           "type": "skill",
-          "checksum": "sha256:ba7d689cd2c008ff28568f9ac75a5f3819bd28f85a2420e3af44b0d999fdaba0"
+          "checksum": "sha256:9d9fce3ca6bbbd2531f67f07ed0ab342fd6ca2575309615152264f0f68eef416"
         },
         {
           "path": "skills/customer-success/support-ticket-triager",
           "type": "skill",
-          "checksum": "sha256:6499367af5b7908a5333003a304d8668ab34efa26172f128d8b6d33644233d24"
+          "checksum": "sha256:00731c2ffae97d7d2d22d44f1b5e464ba747ccf85da74ed688bb7bf1dd752755"
         }
       ]
     },
