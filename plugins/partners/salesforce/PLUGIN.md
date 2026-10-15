@@ -5,6 +5,7 @@ description: Pipeline and deal-management workflows for teams that run sales in 
 author: Salesforce
 version: 0.1.0
 kind: partner
+icon: assets/icon.svg
 skills:
   - skills/sales/deal-pipeline-manager
   - skills/sales/competitor-intel
