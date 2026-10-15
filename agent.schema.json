@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Amazon Quick Official Agent",
+  "description": "Schema for an official agent definition (agents/{category}/{name}/agent.json). The format is the app's Agent Export JSON with three catalog-only additions (schema_version, author, icon). Field limits mirror the in-product agent limits.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "name",
+    "description",
+    "system_prompt",
+    "welcome_message",
+    "starter_prompts",
+    "capabilities",
+    "skills",
+    "connectors",
+    "spaces",
+    "files"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "description": "Agent file format version. v1 is the only accepted value."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50,
+      "description": "Display name shown in the catalog and the agent list."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000,
+      "description": "One-paragraph description of what the agent does."
+    },
+    "system_prompt": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 50000,
+      "description": "The agent's system prompt / instructions."
+    },
+    "welcome_message": {
+      "type": "string",
+      "maxLength": 300,
+      "description": "Greeting shown when a chat with the agent opens."
+    },
+    "starter_prompts": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "description": "Up to 3 suggested first prompts, each at most 100 characters."
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "description": "Built-in capabilities the agent uses, e.g. [\"WEB_SEARCH\"]."
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*/[a-z0-9][a-z0-9-]*[a-z0-9]$"
+      },
+      "uniqueItems": true,
+      "description": "Official skills from this catalog, by their '{category}/{name}' path under skills/ (no ids). Each maps to a skill 'path' in catalog.json."
+    },
+    "author": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "Human-readable author/publisher, same rules as a skill's frontmatter author. Optional."
+    },
+    "icon": {
+      "type": "string",
+      "pattern": "^(\\./)?assets/[a-z0-9][a-z0-9._-]*\\.svg$",
+      "description": "Relative path to the agent icon inside its own folder, SVG only (same rules and 5 KB cap as skill icons). Optional."
+    },
+    "connectors": {
+      "type": "array",
+      "maxItems": 0,
+      "description": "Must be empty in v1."
+    },
+    "spaces": {
+      "type": "array",
+      "maxItems": 0,
+      "description": "Must be empty in v1."
+    },
+    "files": {
+      "type": "array",
+      "maxItems": 0,
+      "description": "Must be empty in v1."
+    }
+  }
+}

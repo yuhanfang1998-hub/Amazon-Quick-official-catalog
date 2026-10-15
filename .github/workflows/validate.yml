@@ -1,0 +1,41 @@
+name: Validate Catalog
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Install dependencies
+        run: uv sync --dev
+
+      - name: Lint (ruff)
+        run: |
+          uv run ruff check scripts tests
+          uv run ruff format --check scripts tests
+
+      - name: Verify per-asset checksums (skills + agents)
+        run: uv run python -m scripts.skills_checksum --check
+
+      - name: Validate catalog + official agents
+        run: uv run python -m scripts.agents_validate
+
+      - name: Run validator tests
+        run: uv run python -m unittest discover -s tests -v

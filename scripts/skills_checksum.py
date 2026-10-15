@@ -1,15 +1,26 @@
-"""Per-skill checksums for the Amazon Quick Official Catalog.
+"""Per-asset checksums for the Amazon Quick Official Catalog.
 
-Computes a deterministic SHA-256 content digest for each skill and records it in
-two places, plus a catalog-wide roll-up:
+Computes a deterministic SHA-256 content digest for each skill and each agent
+and records it in ``catalog.json``, plus a catalog-wide roll-up:
 
   - ``SKILL.md`` frontmatter: ``checksum: "sha256:<hex>"`` for every skill on
     disk, so the digest travels with the skill when it is installed on its own.
-  - ``catalog.json``: a ``checksum`` field on each published skill asset, so a
-    consumer can verify every shipped skill and see which one changed from the
-    single catalog manifest.
+  - ``catalog.json``: a ``checksum`` field on each published skill AND agent
+    asset, so a consumer can verify every shipped asset and see which one
+    changed from the single catalog manifest.
   - ``catalog.json`` top-level ``skillsChecksum``: a roll-up hash over the
-    published set (``path\\tchecksum`` lines), a one-line whole-catalog signal.
+    published SKILL set only (``path\\tchecksum`` lines), a one-line
+    whole-catalog signal.
+
+Why the roll-up stays skills-only (deliberate):
+  ``skillsChecksum`` is consumed by the app as the skill-catalog signature; it
+  predates agents and the app compares it as-is. Agents are a separate asset
+  class with their own per-asset ``checksum`` in ``catalog.json``, so adding
+  them to the roll-up would change the value for an unchanged skill set and
+  break that comparison. Agents therefore get a per-asset checksum but are
+  excluded from the roll-up. If an agent roll-up is wanted later it should be a
+  new, separate top-level key (e.g. ``agentsChecksum``), never folded into this
+  one.
 
 The per-skill algorithm matches the skill-builder skill's create_checksum.py
 exactly, so a skill authored there produces the same digest the catalog expects:
@@ -19,10 +30,15 @@ line to a manifest, and the manifest is hashed. ``evals/``, ``tests/``, caches,
 (.releaseignore ``**/evals/``); SKILL.md contributes its content with the
 checksum line removed, so re-writing is idempotent.
 
-The published set is defined by ``catalog.json`` (its skill assets), which
+The per-agent algorithm uses the same manifest+digest, over the agent folder's
+``agent.json`` plus any ``assets/`` files (icon.svg). ``agent.json`` carries no
+checksum field (the app parses it against a fixed contract), so it is hashed
+as-is and the agent's digest lives only in ``catalog.json``.
+
+The published set is defined by ``catalog.json`` (its skill/agent assets), which
 excludes internal, release-ignored skills such as catalog-skill-contributor.
 Every skill on disk still receives a SKILL.md checksum for uniform
-self-integrity; only published skills feed the catalog fields and the roll-up.
+self-integrity; only published skills feed the roll-up.
 
 Written by the ``fix`` flow and verified by the build:
 
@@ -31,7 +47,7 @@ Written by the ``fix`` flow and verified by the build:
 
 In ``--check`` mode every stored value is recomputed from disk and compared;
 any mismatch, missing value, or catalog path that does not resolve on disk fails
-the build, so a skill change that was not accompanied by a checksum
+the build, so a skill or agent change that was not accompanied by a checksum
 regeneration is caught in CI.
 """
 
@@ -50,9 +66,12 @@ from pydantic import BaseModel
 CATALOG_FILE = "catalog.json"
 SKILLS_DIR = "skills"
 SKILL_FILE = "SKILL.md"
+AGENTS_DIR = "agents"
+AGENT_FILE = "agent.json"
 ROLLUP_KEY = "skillsChecksum"
 ASSET_CHECKSUM_KEY = "checksum"
 SKILL_ASSET_TYPE = "skill"
+AGENT_ASSET_TYPE = "agent"
 DIGEST_PREFIX = "sha256"
 INDENT = 2
 
@@ -113,6 +132,40 @@ class SkillManifest:
         if path.suffix in EXCLUDE_SUFFIXES or path.name in EXCLUDE_NAMES:
             return False
         return not TEST_FILE_RE.match(path.name)
+
+
+class AgentManifest:
+    """Reads an agent directory into a {relpath: content} manifest (I/O).
+
+    Surface is the agent folder's ``agent.json`` plus any files under
+    ``assets/`` (icon.svg). Unlike SKILL.md, ``agent.json`` has no checksum
+    field to strip (its digest lives only in catalog.json), so every file is
+    hashed as-is. The same noise exclusions as skills apply.
+    """
+
+    def __init__(self, agent_dir: Path) -> None:
+        self.agent_dir = agent_dir
+
+    def collect(self) -> dict[str, bytes]:
+        """Map each included file to its bytes, keyed by POSIX relative path."""
+        manifest: dict[str, bytes] = {}
+        agent_json = self.agent_dir / AGENT_FILE
+        if agent_json.is_file():
+            manifest[AGENT_FILE] = agent_json.read_bytes()
+        for path in sorted(self.agent_dir.rglob("*")):
+            if path.name == AGENT_FILE or not self._is_included(path):
+                continue
+            relpath = path.relative_to(self.agent_dir).as_posix()
+            manifest[relpath] = path.read_bytes()
+        return manifest
+
+    def _is_included(self, path: Path) -> bool:
+        if not path.is_file():
+            return False
+        parts = set(path.relative_to(self.agent_dir).parts)
+        if parts & EXCLUDE_DIR_NAMES:
+            return False
+        return not (path.suffix in EXCLUDE_SUFFIXES or path.name in EXCLUDE_NAMES)
 
 
 class ManifestDigest:
@@ -176,6 +229,7 @@ class SkillsChecksumService:
     def __init__(self, project_dir: Path) -> None:
         self.project_dir = project_dir
         self.skills_dir = project_dir / SKILLS_DIR
+        self.agents_dir = project_dir / AGENTS_DIR
         self.catalog_file = project_dir / CATALOG_FILE
 
     def write(self) -> ChecksumResponse:
@@ -196,6 +250,15 @@ class SkillsChecksumService:
             digest = digests.get(asset["path"])
             if digest is not None:
                 asset[ASSET_CHECKSUM_KEY] = digest
+
+        # Agents: per-asset checksum only. Deliberately NOT in the roll-up — see
+        # the module docstring ("Why the roll-up stays skills-only").
+        agent_digests = self._compute_agent_digests()
+        for asset in self._agent_assets(catalog):
+            digest = agent_digests.get(asset["path"])
+            if digest is not None:
+                asset[ASSET_CHECKSUM_KEY] = digest
+
         rollup = self._roll_up(published)
         catalog[ROLLUP_KEY] = rollup
         self.catalog_file.write_text(json.dumps(catalog, indent=INDENT) + "\n")
@@ -222,6 +285,20 @@ class SkillsChecksumService:
             computed = digests.get(path)
             if computed is None:
                 problems.append(f"{path}: catalog lists it but no skill on disk")
+                continue
+            stored = asset.get(ASSET_CHECKSUM_KEY)
+            if stored != computed:
+                problems.append(
+                    f"{path}: catalog.json checksum {self._describe(stored)} "
+                    f"!= computed {computed}"
+                )
+
+        agent_digests = self._compute_agent_digests()
+        for asset in self._agent_assets(catalog):
+            path = asset["path"]
+            computed = agent_digests.get(path)
+            if computed is None:
+                problems.append(f"{path}: catalog lists it but no agent on disk")
                 continue
             stored = asset.get(ASSET_CHECKSUM_KEY)
             if stored != computed:
@@ -315,6 +392,44 @@ class SkillsChecksumService:
                 if asset.get("type") == SKILL_ASSET_TYPE:
                     yield asset
 
+    def _agent_assets(self, catalog: dict) -> Iterator[dict]:
+        """Yield every agent-type asset entry across all catalog categories."""
+        for category in catalog.get("categories", []):
+            for asset in category.get("assets", []):
+                if asset.get("type") == AGENT_ASSET_TYPE:
+                    yield asset
+
+    def _compute_agent_digests(self) -> dict[str, str]:
+        """Map each on-disk agent's project-relative path to its digest."""
+        return {
+            self._agent_key(agent_dir): ManifestDigest(
+                AgentManifest(agent_dir).collect()
+            ).compute()
+            for agent_dir in self._iter_agent_dirs()
+        }
+
+    def _iter_agent_dirs(self) -> Iterator[Path]:
+        """Yield every agent directory under agents/{category}/{name}.
+
+        An agent directory is a folder containing an ``agent.json``. Flat and
+        categorized layouts are both supported, mirroring _iter_skill_dirs.
+        """
+        if not self.agents_dir.exists():
+            return
+        for entry in sorted(self.agents_dir.iterdir()):
+            if not entry.is_dir():
+                continue
+            if (entry / AGENT_FILE).is_file():
+                yield entry
+            else:
+                for child in sorted(entry.iterdir()):
+                    if child.is_dir() and (child / AGENT_FILE).is_file():
+                        yield child
+
+    def _agent_key(self, agent_dir: Path) -> str:
+        """Return the agent's project-relative POSIX path (catalog asset key)."""
+        return agent_dir.relative_to(self.project_dir).as_posix()
+
     @staticmethod
     def _describe(value: str | None) -> str:
         """Render a stored checksum for a message, naming absence explicitly."""
@@ -336,7 +451,7 @@ def main(check: bool) -> None:
 
     if not check:
         response = service.write()
-        logger.success(f"Wrote per-skill checksums; {ROLLUP_KEY}: {response.rollup}")
+        logger.success(f"Wrote per-asset checksums; {ROLLUP_KEY}: {response.rollup}")
         sys.exit(0)
 
     response = service.check()
