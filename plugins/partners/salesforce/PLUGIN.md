@@ -15,5 +15,10 @@ connectors: []
 
 # Salesforce
 
-A **partner** plugin, published by Salesforce. POC sample only: it reuses existing
-catalog skills and does not yet ship a Salesforce connector.
+Pipeline and deal-management workflows for teams that run their sales in
+Salesforce, published by Salesforce.
+
+## What's included
+
+- **Deal Pipeline Manager** — keep your pipeline current and moving.
+- **Competitor Intel** — pull together competitive intelligence for a deal.

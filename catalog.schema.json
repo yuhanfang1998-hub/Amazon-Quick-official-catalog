@@ -97,6 +97,27 @@
           "minLength": 1,
           "maxLength": 128,
           "description": "Display name of the publishing company. Required when publisher_type is THIRD_PARTY."
+        },
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128,
+          "description": "Quick-specific display name for a plugin asset, shown in the Plugins tab. Catalog-only; plugin.json stays pure Claude format."
+        },
+        "icon": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 192,
+          "description": "Plugin-relative path to an SVG icon (e.g. 'assets/icon.svg'), shown in the card/detail. Catalog-only display hint."
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "solution",
+            "package",
+            "partner"
+          ],
+          "description": "Quick plugin kind badge (Solution/Package/Partner). Catalog-only display hint for plugin assets."
         }
       },
       "allOf": [

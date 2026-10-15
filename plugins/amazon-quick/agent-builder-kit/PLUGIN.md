@@ -13,9 +13,12 @@ agents:
 
 # Agent Builder Kit
 
-A **solution** plugin: one install gives you a skill plus an agent that uses it.
+Everything you need to turn an existing agent definition into a reusable Amazon
+Quick skill — plus a ready-made agent to try it on.
 
 ## What's included
 
-- **Agent to Quick Skill** (skill): converts an agent into a Quick skill.
-- **Yhfang Test Agent** (agent): a sample agent wired to the skill above.
+- **Agent to Quick Skill** — converts an agent definition into a Quick skill you
+  can run and share.
+- **Yhfang Test Agent** — a sample agent wired to the skill above, so you can see
+  the conversion end to end right after installing.

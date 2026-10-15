@@ -34,6 +34,13 @@
         {
           "path": "plugins/amazon-quick/agent-builder-kit",
           "type": "plugin"
+        },
+        {
+          "path": "plugins/amazon-quick/quick-starter-kit",
+          "type": "plugin",
+          "displayName": "Quick Starter Kit",
+          "icon": "assets/icon.svg",
+          "kind": "package"
         }
       ]
     },
