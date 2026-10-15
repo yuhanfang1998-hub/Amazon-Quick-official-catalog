@@ -30,6 +30,10 @@
           "path": "agents/amazon-quick/yhfang-test-agent",
           "type": "agent",
           "checksum": "sha256:2d5d65c39a2b4095382b0f4d1992ef29f18814eac31173d47beccbfb92317058"
+        },
+        {
+          "path": "plugins/amazon-quick/agent-builder-kit",
+          "type": "plugin"
         }
       ]
     },
@@ -494,7 +498,7 @@
     {
       "name": "Project Management",
       "slug": "project-management",
-      "description": "Deliver on scope, schedule, and quality \u2014 every time.",
+      "description": "Deliver on scope, schedule, and quality — every time.",
       "assets": [
         {
           "path": "skills/project-management/dependency-critical-path-analyzer",
@@ -602,6 +606,10 @@
           "path": "skills/sales/selling-partner-listing-compliance",
           "type": "skill",
           "checksum": "sha256:2c67c731077016a4b80d371b8aab62dbc3d6d6732b3beed32af3090e1e86252b"
+        },
+        {
+          "path": "plugins/sales/sales-starter-pack",
+          "type": "plugin"
         }
       ]
     },
@@ -641,6 +649,17 @@
           "path": "skills/supply-chain/retail-supply-chain-pulse",
           "type": "skill",
           "checksum": "sha256:f5f3be74d2d3665c27a4a1eccc60bdc8e9dbace88fdbc02b3cb1740ed6253397"
+        }
+      ]
+    },
+    {
+      "name": "Partners",
+      "slug": "partners",
+      "description": "Plugins published by Amazon Quick partners.",
+      "assets": [
+        {
+          "path": "plugins/partners/salesforce",
+          "type": "plugin"
         }
       ]
     }
