@@ -25,6 +25,11 @@
           "path": "skills/amazon-quick/personal-agent-architect",
           "type": "skill",
           "checksum": "sha256:cb881c128b4904863f6a163c287e0f76858794bc79bd85140954ea26f30959ec"
+        },
+        {
+          "path": "agents/amazon-quick/yhfang-test-agent",
+          "type": "agent",
+          "checksum": "sha256:2d5d65c39a2b4095382b0f4d1992ef29f18814eac31173d47beccbfb92317058"
         }
       ]
     },
