@@ -621,6 +621,11 @@
           "type": "plugin"
         },
         {
+          "path": "agents/sales/sales-assistant",
+          "type": "agent",
+          "checksum": "sha256:62a24f697550341c0d85ee0b9bb880736c57fea6262245de406c313322b98f02"
+        },
+        {
           "path": "plugins/sales/sales-command-center",
           "type": "plugin",
           "kind": "solution"

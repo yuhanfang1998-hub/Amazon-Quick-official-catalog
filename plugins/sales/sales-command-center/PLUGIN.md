@@ -12,15 +12,16 @@ skills:
   - sales/deal-pipeline-manager
   - sales/follow-up-cadence
   - sales/lead-prospector
-agents: []
+agents:
+  - sales/sales-assistant
 
 categories:
   - Sales
 
 # Solution front door; must be one of this plugin's own children.
 entrypoint:
-  type: skill
-  ref: sales/deal-pipeline-manager
+  type: agent
+  ref: sales/sales-assistant
   goal: Review my pipeline and draft the follow-ups I owe.
 
 # Connector slots: a purpose plus the connector types that can fill it.
