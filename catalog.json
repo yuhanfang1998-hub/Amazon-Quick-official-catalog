@@ -637,6 +637,16 @@
           "path": "skills/sales/selling-partner-listing-compliance",
           "type": "skill",
           "checksum": "sha256:2c67c731077016a4b80d371b8aab62dbc3d6d6732b3beed32af3090e1e86252b"
+        },
+        {
+          "path": "agents/sales/market-analyst",
+          "type": "agent",
+          "checksum": "sha256:599a08152e3ebfa33d38935fb643449be73f274d5ce9b24d2ba67c5d7b7d544f"
+        },
+        {
+          "path": "plugins/sales/competitive-intel",
+          "type": "plugin",
+          "kind": "solution"
         }
       ]
     },
