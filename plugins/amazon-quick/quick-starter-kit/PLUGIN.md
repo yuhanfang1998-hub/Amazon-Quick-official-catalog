@@ -2,7 +2,7 @@
 name: quick-starter-kit
 display_name: Quick Starter Kit
 description: Everyday writing helpers for Amazon Quick -- turn meeting notes into action items and keep your drafts sounding human.
-author: Amazon Quick
+author: Amazon
 version: 0.1.0
 kind: package
 icon: assets/icon.svg

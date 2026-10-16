@@ -2,7 +2,7 @@
 name: agent-builder-kit
 display_name: Agent Builder Kit
 description: Turn an existing agent definition into a reusable Quick skill, with a ready-made test agent to try it on.
-author: Amazon Quick
+author: Amazon
 version: 0.1.0
 kind: solution
 icon: assets/icon.svg

@@ -2,7 +2,7 @@
 name: prior-auth-desk
 display_name: Prior Authorization Desk
 description: Helps payer and provider teams review prior authorization requests against clinical policy and spot denial patterns.
-author: Amazon Quick
+author: Amazon
 version: 0.1.0
 kind: solution
 icon: assets/icon.svg

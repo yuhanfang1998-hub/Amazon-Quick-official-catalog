@@ -2,7 +2,7 @@
 name: sales-command-center
 display_name: Sales Command Center
 description: Keeps a seller's pipeline current and their follow-ups on time.
-author: Amazon Quick
+author: Amazon
 version: 0.1.0
 kind: solution
 icon: assets/icon.svg

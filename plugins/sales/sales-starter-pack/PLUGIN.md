@@ -2,7 +2,7 @@
 name: sales-starter-pack
 display_name: Sales Starter Pack
 description: The core prospecting and follow-up skills a seller needs in week one.
-author: Amazon Quick
+author: Amazon
 version: 0.1.0
 kind: package
 icon: assets/icon.svg
