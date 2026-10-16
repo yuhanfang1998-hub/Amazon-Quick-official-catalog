@@ -1,25 +1,16 @@
 ---
 name: meeting-notes-summarizer
 display_name: Meeting Notes Summarizer
-description: "Turns raw meeting notes or a transcript into a clean summary: key decisions, action items with owners and due dates, and open questions. Use when asked to 'summarize these notes', 'what did we decide', 'pull the action items', or 'write up the meeting'."
+description: "Summarizes meeting notes or a transcript into a TL;DR, decisions, action items, and open questions."
 ---
 
 # Meeting Notes Summarizer
 
-Turn messy meeting notes or a transcript into something a teammate can read in
-30 seconds.
+Summarize meeting notes or a transcript into four sections:
 
-## What it produces
+1. **TL;DR**: one or two sentences on what the meeting covered and its outcome.
+2. **Decisions**: one bullet per decision.
+3. **Action items**: a table with Owner, Action, and Due date. Write `(unassigned)` or `(no date)` when the notes don't say.
+4. **Open questions**: topics raised but not resolved.
 
-1. **TL;DR** — one or two sentences on what the meeting was about and the outcome.
-2. **Decisions** — each decision as a single bullet, in plain language.
-3. **Action items** — a table of `Owner · Action · Due date`. If an owner or due
-   date was not stated, mark it `(unassigned)` / `(no date)` rather than guessing.
-4. **Open questions** — anything raised but not resolved.
-
-## How to use
-
-Paste or point to the notes and say what you want ("summarize", "just the action
-items", "who owns what"). Keep every name and date exactly as written in the
-source — do not invent attendees, owners, or dates. If the notes are too sparse
-to fill a section, say so instead of padding it.
+Use only names and dates that appear in the notes. If a section has nothing to report, say so.

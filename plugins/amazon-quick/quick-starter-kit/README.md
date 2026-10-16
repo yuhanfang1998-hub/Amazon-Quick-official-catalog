@@ -17,13 +17,3 @@ After installing, just ask in chat — for example:
 
 - "Summarize these meeting notes and pull out the action items."
 - "Draft my weekly status update from these bullets."
-
-Both skills keep strictly to what you give them: real names, real dates, real
-results — never invented details. If something is missing they say so rather
-than filling the gap.
-
-## Who it's for
-
-Anyone who runs meetings or sends a weekly update — product managers, team leads,
-engineers, and operators who want the writing done in seconds without losing the
-facts.
