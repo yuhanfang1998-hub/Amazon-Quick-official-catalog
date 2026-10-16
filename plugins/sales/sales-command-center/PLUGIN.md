@@ -26,6 +26,11 @@ entrypoint:
 
 # Connector slots: a purpose plus the connector types that can fill it.
 connectors:
+  - key: crm
+    label: CRM
+    description: Where your opportunities, accounts and contacts live.
+    types: [SALESFORCE_CRM, SALESFORCE]
+    required: false
   - key: communication
     label: Communication
     description: Where follow-ups are sent from.

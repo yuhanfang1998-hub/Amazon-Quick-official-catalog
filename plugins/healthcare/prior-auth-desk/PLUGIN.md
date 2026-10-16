@@ -12,16 +12,16 @@ skills:
   - healthcare/prior-authorization-clinical-policy
   - healthcare/prior-authorization-decision-automation
   - healthcare/healthcare-claims-analytics
-agents: []
+agents:
+  - healthcare/prior-auth-reviewer
 
 categories:
   - Healthcare & Life Sciences
 
-# Solution front door. No healthcare agent exists in the pool yet, so the
-# entry point is a skill -- it must be one of the skills listed above.
+# Solution front door: the reviewer agent, which drives the three skills above.
 entrypoint:
-  type: skill
-  ref: healthcare/prior-authorization-clinical-policy
+  type: agent
+  ref: healthcare/prior-auth-reviewer
   goal: Check this prior authorization request against our clinical policy and tell me what is missing.
 
 # Connector slots: a purpose plus the connector types that can fill it.
@@ -34,7 +34,7 @@ connectors:
   - key: communication
     label: Communication
     description: Where review summaries and appeal letters are sent from.
-    types: [MICROSOFT_OUTLOOK, GMAIL, MICROSOFT_TEAMS]
+    types: [MICROSOFT_OUTLOOK, GMAIL, MICROSOFT_TEAMS, SLACK]
     required: false
 ---
 
@@ -45,6 +45,7 @@ request is missing, and see where denials cluster.
 
 ## What's included
 
+- **Prior Auth Reviewer** (agent) — reviews a request end to end and tells you what is missing; start here.
 - **Prior Authorization Clinical Policy Reasoning** — check a request against coverage criteria, step therapy and appeal options.
 - **Prior Authorization Decision Automation** — turn PA rules into a repeatable review workflow and explain denials.
 - **Healthcare Claims Analytics** — screen claims for billing issues and outliers.

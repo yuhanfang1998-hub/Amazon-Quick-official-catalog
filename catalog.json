@@ -359,6 +359,11 @@
           "path": "plugins/healthcare/prior-auth-desk",
           "type": "plugin",
           "kind": "solution"
+        },
+        {
+          "path": "agents/healthcare/prior-auth-reviewer",
+          "type": "agent",
+          "checksum": "sha256:8f2e9c8fbadbc5ef8029e7fa1a4474074ade72d0de3f620ac265631e12b98de9"
         }
       ]
     },
@@ -507,7 +512,7 @@
     {
       "name": "Project Management",
       "slug": "project-management",
-      "description": "Deliver on scope, schedule, and quality \u2014 every time.",
+      "description": "Deliver on scope, schedule, and quality — every time.",
       "assets": [
         {
           "path": "skills/project-management/dependency-critical-path-analyzer",
@@ -623,7 +628,7 @@
         {
           "path": "agents/sales/sales-assistant",
           "type": "agent",
-          "checksum": "sha256:62a24f697550341c0d85ee0b9bb880736c57fea6262245de406c313322b98f02"
+          "checksum": "sha256:502d2c3cebd11c18977652dfa5981e22661e7031bb72f9ad49543f98b334df98"
         },
         {
           "path": "plugins/sales/sales-command-center",
@@ -668,6 +673,16 @@
           "path": "skills/supply-chain/retail-supply-chain-pulse",
           "type": "skill",
           "checksum": "sha256:f5f3be74d2d3665c27a4a1eccc60bdc8e9dbace88fdbc02b3cb1740ed6253397"
+        },
+        {
+          "path": "agents/supply-chain/retail-merchant-assistant",
+          "type": "agent",
+          "checksum": "sha256:3c923d048bb6d98d20281feabf0e304072603539b0c48c5e2df9d293b34d925a"
+        },
+        {
+          "path": "plugins/supply-chain/retail-merchant-desk",
+          "type": "plugin",
+          "kind": "solution"
         }
       ]
     },
