@@ -5,10 +5,21 @@ description: Turn an existing agent definition into a reusable Quick skill, with
 author: Amazon Quick
 version: 0.1.0
 kind: solution
+
+# References into the shared pools, form <category>/<name>.
 skills:
-  - skills/amazon-quick/agent-to-quick-skill
+  - amazon-quick/agent-to-quick-skill
 agents:
-  - agents/amazon-quick/yhfang-test-agent
+  - amazon-quick/yhfang-test-agent
+
+categories:
+  - Amazon Quick
+
+# Solution front door; must be one of this plugin's own children.
+entrypoint:
+  type: agent
+  ref: amazon-quick/yhfang-test-agent
+  goal: Turn my agent definition into a reusable Quick skill.
 ---
 
 # Agent Builder Kit

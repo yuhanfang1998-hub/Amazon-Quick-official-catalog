@@ -6,11 +6,22 @@ author: Salesforce
 version: 0.1.0
 kind: partner
 icon: assets/icon.svg
+
+# References into the shared skill pool, form <category>/<name>.
 skills:
-  - skills/sales/deal-pipeline-manager
-  - skills/sales/competitor-intel
+  - sales/deal-pipeline-manager
+  - sales/competitor-intel
 agents: []
-connectors: []
+
+categories:
+  - Sales
+
+connectors:
+  - key: crm
+    label: CRM
+    description: The Salesforce org your pipeline lives in.
+    types: [SALESFORCE_CRM]
+    required: true
 ---
 
 # Salesforce

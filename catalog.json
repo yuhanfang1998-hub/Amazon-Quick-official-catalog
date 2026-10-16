@@ -37,10 +37,7 @@
         },
         {
           "path": "plugins/amazon-quick/quick-starter-kit",
-          "type": "plugin",
-          "displayName": "Quick Starter Kit",
-          "icon": "assets/icon.svg",
-          "kind": "package"
+          "type": "plugin"
         }
       ]
     },
