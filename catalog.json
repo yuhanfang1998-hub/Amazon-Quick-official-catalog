@@ -1,5 +1,5 @@
 {
-  "skillsChecksum": "sha256:63b110c08027edfb1db06f351e73fcd6bef1a27113370e5c84a817b51a9b4b61",
+  "skillsChecksum": "sha256:08b726cbcf61b32cfc781fd25db3c11173140cf044a568125b3014738fa75c4c",
   "categories": [
     {
       "name": "Amazon Quick",
@@ -498,6 +498,41 @@
           "path": "skills/software-engineering/release-notes-generator",
           "type": "skill",
           "checksum": "sha256:83501d34b55c706673a2f4b3438d7ee5f62173e6082419ed3e5c1fa13b47366b"
+        },
+        {
+          "path": "skills/software-engineering/engineering-system-design",
+          "type": "skill",
+          "checksum": "sha256:4c0993ea8283dec165547fcd008f5f652436cb3d0242a0a0329c8842771ad90f"
+        },
+        {
+          "path": "skills/software-engineering/engineering-architecture-decision",
+          "type": "skill",
+          "checksum": "sha256:ac34bd441f0f460c1d180dbfdf197ee424e7b03ff91a33c6bdabb6360b8e064b"
+        },
+        {
+          "path": "skills/software-engineering/engineering-debug",
+          "type": "skill",
+          "checksum": "sha256:95506fb69c0d1810646e402227715fcfeccaeb4092e2f82664bc3393bece621a"
+        },
+        {
+          "path": "skills/software-engineering/engineering-incident-response",
+          "type": "skill",
+          "checksum": "sha256:8168f28d2de5cdebad51e2c3be08f52aa7dd0540834540dcee02397ca7521121"
+        },
+        {
+          "path": "skills/software-engineering/engineering-testing-strategy",
+          "type": "skill",
+          "checksum": "sha256:751d63a4cf354d878462b0fa976144052b66a26e59afccd8ca5b32436a7e9d15"
+        },
+        {
+          "path": "agents/software-engineering/engineering-assistant",
+          "type": "agent",
+          "checksum": "sha256:f311a3abe820068727ad959b8fee045ddf16908c87ace0f4fdeedf08a00e0b14"
+        },
+        {
+          "path": "plugins/software-engineering/engineering",
+          "type": "plugin",
+          "kind": "solution"
         }
       ]
     },
