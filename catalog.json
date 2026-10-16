@@ -346,16 +346,6 @@
           "path": "skills/healthcare/research-biomedical-databases",
           "type": "skill",
           "checksum": "sha256:b791e24323549b4f19871c15277ff9295252d44ede40dd17cde0270452b17759"
-        },
-        {
-          "path": "plugins/healthcare/prior-auth-desk",
-          "type": "plugin",
-          "kind": "solution"
-        },
-        {
-          "path": "agents/healthcare/prior-auth-reviewer",
-          "type": "agent",
-          "checksum": "sha256:8f2e9c8fbadbc5ef8029e7fa1a4474074ade72d0de3f620ac265631e12b98de9"
         }
       ]
     },

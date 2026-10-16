@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Prior Authorization Desk">
-  <rect x="4" y="4" width="40" height="40" rx="9" fill="#0f766e"/>
-  <rect x="13" y="11" width="22" height="27" rx="3" fill="#ffffff"/>
-  <rect x="19" y="8" width="10" height="6" rx="2" fill="#99f6e4"/>
-  <path d="M24 18 V28 M19 23 H29" stroke="#0f766e" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="34" cy="34" r="7" fill="#f59e0b"/>
-  <path d="M30.7 34.2 L33 36.4 L37.4 31.8" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
