@@ -1,7 +1,7 @@
 ---
 name: enterprise-search
 display_name: Enterprise Search
-description: Ask questions about your work and get one sourced answer from your email, documents and chat -- plus a daily or weekly digest.
+description: "Ask questions about your work and get one sourced answer from your email, documents and chat -- plus a daily or weekly digest. Adapted from Anthropic's Enterprise Search plugin: https://github.com/anthropics/knowledge-work-plugins/tree/main/enterprise-search"
 author: Amazon
 version: 0.1.0
 kind: solution
