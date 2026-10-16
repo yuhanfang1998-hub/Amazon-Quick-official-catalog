@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Agent Builder Kit">
-  <rect x="4" y="4" width="40" height="40" rx="9" fill="#4f46e5"/>
-  <rect x="13" y="16" width="22" height="18" rx="5" fill="#ffffff"/>
-  <path d="M24 10 V16" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
-  <circle cx="24" cy="10" r="2.5" fill="#c7d2fe"/>
-  <circle cx="19.5" cy="24" r="2.2" fill="#4f46e5"/>
-  <circle cx="28.5" cy="24" r="2.2" fill="#4f46e5"/>
-  <path d="M19.5 29.5 H28.5" stroke="#4f46e5" stroke-width="2" stroke-linecap="round"/>
-</svg>

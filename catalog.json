@@ -1,5 +1,5 @@
 {
-  "skillsChecksum": "sha256:3ff8a5447cca50f11538808caf67a7cc9770aa7cba19ff3d1e49db8938660082",
+  "skillsChecksum": "sha256:63b110c08027edfb1db06f351e73fcd6bef1a27113370e5c84a817b51a9b4b61",
   "categories": [
     {
       "name": "Amazon Quick",
@@ -30,14 +30,6 @@
           "path": "agents/amazon-quick/yhfang-test-agent",
           "type": "agent",
           "checksum": "sha256:2d5d65c39a2b4095382b0f4d1992ef29f18814eac31173d47beccbfb92317058"
-        },
-        {
-          "path": "plugins/amazon-quick/agent-builder-kit",
-          "type": "plugin"
-        },
-        {
-          "path": "plugins/amazon-quick/quick-starter-kit",
-          "type": "plugin"
         }
       ]
     },
@@ -512,7 +504,7 @@
     {
       "name": "Project Management",
       "slug": "project-management",
-      "description": "Deliver on scope, schedule, and quality — every time.",
+      "description": "Deliver on scope, schedule, and quality \u2014 every time.",
       "assets": [
         {
           "path": "skills/project-management/dependency-critical-path-analyzer",
@@ -620,20 +612,6 @@
           "path": "skills/sales/selling-partner-listing-compliance",
           "type": "skill",
           "checksum": "sha256:2c67c731077016a4b80d371b8aab62dbc3d6d6732b3beed32af3090e1e86252b"
-        },
-        {
-          "path": "plugins/sales/sales-starter-pack",
-          "type": "plugin"
-        },
-        {
-          "path": "agents/sales/sales-assistant",
-          "type": "agent",
-          "checksum": "sha256:502d2c3cebd11c18977652dfa5981e22661e7031bb72f9ad49543f98b334df98"
-        },
-        {
-          "path": "plugins/sales/sales-command-center",
-          "type": "plugin",
-          "kind": "solution"
         }
       ]
     },
@@ -673,16 +651,6 @@
           "path": "skills/supply-chain/retail-supply-chain-pulse",
           "type": "skill",
           "checksum": "sha256:f5f3be74d2d3665c27a4a1eccc60bdc8e9dbace88fdbc02b3cb1740ed6253397"
-        },
-        {
-          "path": "agents/supply-chain/retail-merchant-assistant",
-          "type": "agent",
-          "checksum": "sha256:3c923d048bb6d98d20281feabf0e304072603539b0c48c5e2df9d293b34d925a"
-        },
-        {
-          "path": "plugins/supply-chain/retail-merchant-desk",
-          "type": "plugin",
-          "kind": "solution"
         }
       ]
     },
@@ -700,10 +668,48 @@
           "path": "skills/partners/slack-search",
           "type": "skill",
           "checksum": "sha256:d7184caf1be8cd64dc667be6ae7496b54cd819ca9252df4921279aebdb1d293b"
+        }
+      ]
+    },
+    {
+      "name": "Enterprise Search",
+      "slug": "enterprise-search",
+      "description": "Find answers across your email, documents and chat.",
+      "assets": [
+        {
+          "path": "skills/enterprise-search/enterprise-search",
+          "type": "skill",
+          "checksum": "sha256:3692c93704ea4de7a41ded43952b0d196bb897af339d555bb7ae1a4d532858d8"
         },
         {
-          "path": "plugins/partners/slack",
-          "type": "plugin"
+          "path": "skills/enterprise-search/enterprise-digest",
+          "type": "skill",
+          "checksum": "sha256:5e1318679d84e0b549ced17962852d71b62725fc7306a00c32e825762ba75cd3"
+        },
+        {
+          "path": "skills/enterprise-search/enterprise-search-strategy",
+          "type": "skill",
+          "checksum": "sha256:ef1e08780883e21669dc682adff25c95636e7a88e012e725c14cd072bfe1a4a1"
+        },
+        {
+          "path": "skills/enterprise-search/enterprise-knowledge-synthesis",
+          "type": "skill",
+          "checksum": "sha256:ef122b72686eb891587175f30be1d2359d9d7f56df26c377129713242c323ad1"
+        },
+        {
+          "path": "skills/enterprise-search/enterprise-source-management",
+          "type": "skill",
+          "checksum": "sha256:76d4a2dc49a0ea47d5dcdd38248ec92b6e66374db55062f4fff54bc6dd7936be"
+        },
+        {
+          "path": "agents/enterprise-search/workplace-search-assistant",
+          "type": "agent",
+          "checksum": "sha256:4335e21f0ef7f13eaf7db8881613f944cb009cd23233c742ed55745eaab09653"
+        },
+        {
+          "path": "plugins/enterprise-search/enterprise-search",
+          "type": "plugin",
+          "kind": "solution"
         }
       ]
     }

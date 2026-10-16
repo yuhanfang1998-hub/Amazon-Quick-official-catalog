@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Sales Command Center">
-  <rect x="4" y="4" width="40" height="40" rx="9" fill="#c2410c"/>
-  <rect x="12" y="27" width="5" height="10" rx="1.5" fill="#ffffff"/>
-  <rect x="20" y="21" width="5" height="16" rx="1.5" fill="#ffffff"/>
-  <rect x="28" y="14" width="5" height="23" rx="1.5" fill="#ffffff"/>
-  <path d="M11 22 L19 15 L25 18 L36 10" fill="none" stroke="#fed7aa" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
