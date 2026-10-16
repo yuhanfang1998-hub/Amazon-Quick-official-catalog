@@ -5,6 +5,7 @@ description: The core prospecting and follow-up skills a seller needs in week on
 author: Amazon Quick
 version: 0.1.0
 kind: package
+icon: assets/icon.svg
 
 # References into the shared skill pool, form <category>/<name>.
 skills:

@@ -1,40 +1,29 @@
 ---
-# ── existing keys, unchanged ───────────────────────────────────────────
 name: sales-command-center
 display_name: Sales Command Center
 description: Keeps a seller's pipeline current and their follow-ups on time.
 author: Amazon Quick
 version: 0.1.0
-kind: solution                 # solution | package | partner
+kind: solution
 icon: assets/icon.svg
 
-# Children are REFERENCES into the shared pools. Never copies -- a plugin
-# directory holds a manifest and its icon, nothing else.
-# Form is <category>/<name>; the key already says the type.
+# References into the shared skill pool, form <category>/<name>.
 skills:
   - sales/deal-pipeline-manager
   - sales/follow-up-cadence
   - sales/lead-prospector
-agents:
-  - amazon-quick/yhfang-test-agent
+agents: []
 
-# ── NEW: subject shelves ──────────────────────────────────────────────
-# A list, from catalog.json's category names. Validated against that set.
-# Distinct from `kind`, which is a publisher tier, not a subject.
 categories:
   - Sales
 
-# ── NEW: the front door ───────────────────────────────────────────────
-# Required when kind: solution. Forbidden on package and partner.
-# `ref` MUST be one of this plugin's own children, above.
+# Solution front door; must be one of this plugin's own children.
 entrypoint:
-  type: agent                  # agent | skill
-  ref: amazon-quick/yhfang-test-agent
+  type: skill
+  ref: sales/deal-pipeline-manager
   goal: Review my pipeline and draft the follow-ups I owe.
 
-# ── NEW: what the customer must answer before this plugin can exist ──
-# A slot names a PURPOSE and the connector types that satisfy it --
-# never a specific connector, which only the customer's account knows.
+# Connector slots: a purpose plus the connector types that can fill it.
 connectors:
   - key: communication
     label: Communication

@@ -1,5 +1,5 @@
 {
-  "skillsChecksum": "sha256:fe8bd42cb044363e35ce58138c76d366cf086b9cd44dbb6ad5d868d79878d284",
+  "skillsChecksum": "sha256:3ff8a5447cca50f11538808caf67a7cc9770aa7cba19ff3d1e49db8938660082",
   "categories": [
     {
       "name": "Amazon Quick",
@@ -507,7 +507,7 @@
     {
       "name": "Project Management",
       "slug": "project-management",
-      "description": "Deliver on scope, schedule, and quality — every time.",
+      "description": "Deliver on scope, schedule, and quality \u2014 every time.",
       "assets": [
         {
           "path": "skills/project-management/dependency-critical-path-analyzer",
@@ -672,7 +672,17 @@
       "description": "Plugins published by Amazon Quick partners.",
       "assets": [
         {
-          "path": "plugins/partners/salesforce",
+          "path": "skills/partners/slack-messaging",
+          "type": "skill",
+          "checksum": "sha256:2ffa5840ffeee8707b10f2e29fc46fa8b8cc3fbc26f92463611535cbaf137c3c"
+        },
+        {
+          "path": "skills/partners/slack-search",
+          "type": "skill",
+          "checksum": "sha256:d7184caf1be8cd64dc667be6ae7496b54cd819ca9252df4921279aebdb1d293b"
+        },
+        {
+          "path": "plugins/partners/slack",
           "type": "plugin"
         }
       ]

@@ -5,6 +5,7 @@ description: Turn an existing agent definition into a reusable Quick skill, with
 author: Amazon Quick
 version: 0.1.0
 kind: solution
+icon: assets/icon.svg
 
 # References into the shared pools, form <category>/<name>.
 skills:
